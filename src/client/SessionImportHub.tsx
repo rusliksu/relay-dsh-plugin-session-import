@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useRef, useState, type ComponentType, type ReactNode } from 'react'
+import * as primitives from '@deepseek-ai/dsh-client-ui-primitives'
 import {
-  IconDownloadOutline16,
   Menu,
   Tooltip,
   type MenuItem,
@@ -16,6 +16,9 @@ import type {
 } from '../contracts.ts'
 import type { SessionImportLocaleKey } from './locales.ts'
 import css from './SessionImportHub.module.css'
+
+const IconDownloadOutline16 = Reflect.get(primitives, 'IconDownloadOutlineRegular' in primitives
+  ? 'IconDownloadOutlineRegular' : 'IconDownloadOutline16') as ComponentType<{ size: number }>
 
 interface RegisteredProvider extends SessionImportProviderDescriptor {
   token: symbol
